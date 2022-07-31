@@ -40,7 +40,7 @@ var geometry = new THREE.BoxGeometry(
 );
 
 //texture
-var material = new THREE.MeshLambertMaterial({color: 0x5F4C00})
+var material = new THREE.MeshLambertMaterial({color: 0x4C1130})
 
 //combines geometry and material
 var mesh = new THREE.Mesh(geometry, material);
@@ -79,9 +79,9 @@ var render = function() {
     requestAnimationFrame(render);
 
     //rotate object (animated)
-    // mesh.rotation.x += .01;
-    // mesh.rotation.y += .003;
-    // mesh.rotation.z += .003;
+    mesh.rotation.x += .01;
+    mesh.rotation.y += .003;
+    mesh.rotation.z += .003;
 
     //renders object
     renderer.render(scene, camera);
