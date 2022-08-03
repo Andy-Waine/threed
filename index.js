@@ -1,7 +1,7 @@
 //THREE.js MAIN ITEMS
-var scene = new THREE.Scene();
+const scene = new THREE.Scene();
 
-var camera = new THREE.PerspectiveCamera(
+const camera = new THREE.PerspectiveCamera(
     75, //field-of-view
     window.innerWidth/window.innerHeight, //aspect ratio
     0.1, //near plane
@@ -10,13 +10,18 @@ var camera = new THREE.PerspectiveCamera(
 
 camera.position.z = 5;
 
-var renderer = new THREE.WebGLRenderer(
+const renderer = new THREE.WebGLRenderer(
     {antialias: true}
 );
 //END THREE.js MAIN ITEMS
 
+const texture = new THREE.TextureLoader().load( 'textures/logo-main-01.PNG' );
+//wrap and repeat offset auto-inversion of image by three.js
+texture.wrapS = THREE.RepeatWrapping;
+texture.repeat.x = -1;
+
 //background color
-renderer.setClearColor("#e5e5e5");
+renderer.setClearColor("#607DDE");
 
 //sets canvas size
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -40,20 +45,21 @@ var geometry = new THREE.BoxGeometry(
 );
 
 //texture
-var material = new THREE.MeshLambertMaterial({color: 0x4C1130})
+var material = new THREE.MeshBasicMaterial({ map: texture });
+
 
 //combines geometry and material
 var mesh = new THREE.Mesh(geometry, material);
 
 //position object
-mesh.position.x = -2;
-mesh.position.y = 2;
-mesh.position.z = -2;
+mesh.position.x = 0;
+mesh.position.y = 0;
+mesh.position.z = 0;
 
 //rotate object (fixed)
-mesh.rotation.x = 45;
+mesh.rotation.x = 90;
 mesh.rotation.y = 0;
-mesh.rotation.z = 0;
+mesh.rotation.z = -180;
 
 
 
@@ -61,27 +67,42 @@ scene.add(mesh);
 
 var light = new THREE.PointLight(
     0xFFFFFF, //color
-    1, //intensity
+    2, //intensity
     500 //distance
     )
 
 light.position.set(
-    10, //x-value
-    0, //y-value
-    25 //z-value
+    0, //x-value
+    -10, //y-value
+    200 //z-value
 )
 
 scene.add(light);
 
+//initial position outside of render function
+const renderPosition = mesh.position.y;
 //renders at 60 fps
 var render = function() {
     //re-sizes rendered object with window
     requestAnimationFrame(render);
 
+    //position object (animated)
+    // mesh.position.x += .005;
+    // mesh.position.y += .005;
+    // mesh.position.z += .005;
+
+    // vertical hover (BROKEN)
+    // if (mesh.position.y = renderPosition) {
+    //     mesh.position.y += .005;
+    // }
+    // else if (mesh.position.y > (renderPosition + .050)) {
+    //     mesh.position.y -= .005;
+    // }
+
     //rotate object (animated)
-    mesh.rotation.x += .01;
-    mesh.rotation.y += .003;
-    mesh.rotation.z += .003;
+    // mesh.rotation.x += .005;
+    // mesh.rotation.y += .005;
+    mesh.rotation.z += .005;
 
     //renders object
     renderer.render(scene, camera);
