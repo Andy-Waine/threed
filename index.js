@@ -15,10 +15,20 @@ const renderer = new THREE.WebGLRenderer(
 );
 //END THREE.js MAIN ITEMS
 
-const texture = new THREE.TextureLoader().load( 'textures/logo-main-01.PNG' );
+const loader = new THREE.TextureLoader();
+const cubeMaterials = [ 
+    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-02.PNG'), side:THREE.DoubleSide }), 
+    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-03.PNG'), side:THREE.DoubleSide }), 
+    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-02.PNG'), side:THREE.DoubleSide }), 
+    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-03.PNG'), side:THREE.DoubleSide }),
+    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-01.PNG'), side:THREE.DoubleSide }),  
+    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-01.PNG'), side:THREE.DoubleSide }),
+];
+
+
 //wrap and repeat offset auto-inversion of image by three.js
-texture.wrapS = THREE.RepeatWrapping;
-texture.repeat.x = -1;
+// texture.wrapS = THREE.RepeatWrapping;
+// texture.repeat.x = -1;
 
 //background color
 renderer.setClearColor("#607DDE");
@@ -44,12 +54,8 @@ var geometry = new THREE.BoxGeometry(
     1 //heightSegment
 );
 
-//texture
-var material = new THREE.MeshBasicMaterial({ map: texture });
-
-
 //combines geometry and material
-var mesh = new THREE.Mesh(geometry, material);
+var mesh = new THREE.Mesh(geometry, cubeMaterials);
 
 //position object
 mesh.position.x = 0;
