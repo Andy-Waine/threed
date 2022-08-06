@@ -15,14 +15,41 @@ const renderer = new THREE.WebGLRenderer(
 );
 //END THREE.js MAIN ITEMS
 
-const loader = new THREE.TextureLoader();
+//LOADERS: texture manipulation properties g0 here
+const loaderSide01 = new THREE.TextureLoader().load('textures/logo-main-01.PNG');
+    loaderSide01.wrapS = THREE.RepeatWrapping;
+    loaderSide01.repeat.x = -1;
+const loaderSide01Inv = new THREE.TextureLoader().load('textures/logo-main-01.PNG');
+    loaderSide01Inv.wrapS = THREE.RepeatWrapping;
+    loaderSide01Inv.repeat.x = -1;
+const loaderSide02 = new THREE.TextureLoader().load('textures/logo-main-02.PNG');
+    loaderSide02.wrapS = THREE.RepeatWrapping;
+    loaderSide02.repeat.x = -1;
+    loaderSide02.center.set(.5, .5);
+    loaderSide02.rotation = THREE.Math.degToRad(180);
+const loaderSide02Inv = new THREE.TextureLoader().load('textures/logo-main-02.PNG');
+    loaderSide02Inv.wrapS = THREE.RepeatWrapping;
+    loaderSide02Inv.repeat.x = -1;
+    loaderSide02Inv.center.set(.5, .5);
+    loaderSide02Inv.rotation = THREE.Math.degToRad(0);
+const loaderSide03 = new THREE.TextureLoader().load('textures/logo-main-03.PNG');
+    loaderSide03.wrapS = THREE.RepeatWrapping;
+    loaderSide03.repeat.x = -1;
+    loaderSide03.center.set(.5, .5);
+    loaderSide03.rotation = THREE.Math.degToRad(0);
+const loaderSide03Inv = new THREE.TextureLoader().load('textures/logo-main-03.PNG');
+    loaderSide03Inv.wrapS = THREE.RepeatWrapping;
+    loaderSide03Inv.repeat.x = -1;
+    loaderSide03Inv.center.set(.5, .5);
+    loaderSide03Inv.rotation = THREE.Math.degToRad(180);
+
 const cubeMaterials = [ 
-    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-02.PNG'), side:THREE.DoubleSide }), 
-    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-03.PNG'), side:THREE.DoubleSide }), 
-    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-02.PNG'), side:THREE.DoubleSide }), 
-    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-03.PNG'), side:THREE.DoubleSide }),
-    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-01.PNG'), side:THREE.DoubleSide }),  
-    new THREE.MeshBasicMaterial({ map: loader.load('textures/logo-main-01.PNG'), side:THREE.DoubleSide }),
+    new THREE.MeshBasicMaterial({ map: loaderSide03 }), 
+    new THREE.MeshBasicMaterial({ map: loaderSide03Inv }),
+    new THREE.MeshBasicMaterial({ map: loaderSide02 }), 
+    new THREE.MeshBasicMaterial({ map: loaderSide02Inv }), 
+    new THREE.MeshBasicMaterial({ map: loaderSide01 }),  
+    new THREE.MeshBasicMaterial({ map: loaderSide01Inv }),
 ];
 
 
@@ -65,7 +92,7 @@ mesh.position.z = 0;
 //rotate object (fixed)
 mesh.rotation.x = 90;
 mesh.rotation.y = 0;
-mesh.rotation.z = -180;
+mesh.rotation.z = 0;
 
 
 
