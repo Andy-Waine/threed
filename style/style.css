@@ -6,3 +6,20 @@ body {
 canvas {
     display: block;
 }
+
+.menu {
+    display: flex;
+    position: absolute;
+    min-height: 70vh;
+    min-width: 25vw;
+    top: 15vh;
+    left: 80px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.menu-header {
+    padding-top: 2vh;
+    
+}

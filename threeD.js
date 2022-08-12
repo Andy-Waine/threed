@@ -76,16 +76,16 @@ window.addEventListener('resize', () => {
 
 //shape
 var geometry = new THREE.BoxGeometry(
-    1, //radius
-    1, //widthSegment
-    1 //heightSegment
+    1.5, //radius
+    1.5, //widthSegment
+    1.5 //heightSegment
 );
 
 //combines geometry and material
 var mesh = new THREE.Mesh(geometry, cubeMaterials);
 
 //position object
-mesh.position.x = 0;
+mesh.position.x = 1.8;
 mesh.position.y = 0;
 mesh.position.z = 0;
 
