@@ -58,7 +58,7 @@ const cubeMaterials = [
 // texture.repeat.x = -1;
 
 //background color
-renderer.setClearColor("#607DDE");
+renderer.setClearColor("#1c1c1c");
 
 //sets canvas size
 renderer.setSize(window.innerWidth, window.innerHeight);

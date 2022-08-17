@@ -1,25 +1,56 @@
 body {
     margin: 0;
     height: 100vh;
+    background-color: #1c1c1c;
+    font-family: interstate, sans-serif;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5em;
 }
 
 canvas {
     display: block;
 }
 
-.menu {
+.nav {
+    position: sticky;
+    top: 0px;
+    z-index: 10;
     display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 88px;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.menu {
+    display: grid;
+    flex-direction: row;
     position: absolute;
-    min-height: 70vh;
-    min-width: 25vw;
+    height: 60vh;
+    min-height: 500px;
+    min-width: 300px;
     top: 15vh;
     left: 80px;
-    background-color: aliceblue;
     border-radius: 10px;
     justify-content: center;
+    border: 1px solid #fff;
 }
 
 .menu-header {
+    font-size: 32px;
+    font-weight: 800;
     padding-top: 2vh;
-    
+}
+
+.menu-item {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.button-mint {
+    height: 50px;
+    width: 200px;
+    background-color: #00FF93;
 }
