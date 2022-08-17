@@ -14,30 +14,34 @@ const renderer = new THREE.WebGLRenderer(
     {antialias: true}
 );
 //END THREE.js MAIN ITEMS
+//texture variables
+const textureSuperior = 'textures/logo-main-B1.PNG';
+const textureLateral01 = 'textures/logo-main-B2.PNG';
+const textureLateral02 = 'textures/logo-main-B3.PNG';
 
 //LOADERS: texture manipulation properties g0 here
-const loaderSide01 = new THREE.TextureLoader().load('textures/logo-main-B1.PNG');
+const loaderSide01 = new THREE.TextureLoader().load(textureSuperior);
     loaderSide01.wrapS = THREE.RepeatWrapping;
     loaderSide01.repeat.x = -1;
-const loaderSide01Inv = new THREE.TextureLoader().load('textures/logo-main-B1.PNG');
+const loaderSide01Inv = new THREE.TextureLoader().load(textureSuperior);
     loaderSide01Inv.wrapS = THREE.RepeatWrapping;
     loaderSide01Inv.repeat.x = -1;
-const loaderSide02 = new THREE.TextureLoader().load('textures/logo-main-B2.PNG');
+const loaderSide02 = new THREE.TextureLoader().load(textureLateral01);
     loaderSide02.wrapS = THREE.RepeatWrapping;
     loaderSide02.repeat.x = -1;
     loaderSide02.center.set(.5, .5);
     loaderSide02.rotation = THREE.Math.degToRad(180);
-const loaderSide02Inv = new THREE.TextureLoader().load('textures/logo-main-B2.PNG');
+const loaderSide02Inv = new THREE.TextureLoader().load(textureLateral01);
     loaderSide02Inv.wrapS = THREE.RepeatWrapping;
     loaderSide02Inv.repeat.x = -1;
     loaderSide02Inv.center.set(.5, .5);
     loaderSide02Inv.rotation = THREE.Math.degToRad(0);
-const loaderSide03 = new THREE.TextureLoader().load('textures/logo-main-B3.PNG');
+const loaderSide03 = new THREE.TextureLoader().load(textureLateral02);
     loaderSide03.wrapS = THREE.RepeatWrapping;
     loaderSide03.repeat.x = -1;
     loaderSide03.center.set(.5, .5);
     loaderSide03.rotation = THREE.Math.degToRad(0);
-const loaderSide03Inv = new THREE.TextureLoader().load('textures/logo-main-B3.PNG');
+const loaderSide03Inv = new THREE.TextureLoader().load(textureLateral02);
     loaderSide03Inv.wrapS = THREE.RepeatWrapping;
     loaderSide03Inv.repeat.x = -1;
     loaderSide03Inv.center.set(.5, .5);
