@@ -60,3 +60,11 @@ canvas {
     width: 200px;
     background-color: #00FF93;
 }
+
+#display_image {
+    width: 375px;
+    height: 211px;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+}
