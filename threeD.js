@@ -1,175 +1,386 @@
-//THREE.js MAIN ITEMS
-const scene = new THREE.Scene();
+var userImageURL = '';
 
-const camera = new THREE.PerspectiveCamera(
-    75, //field-of-view
-    window.innerWidth/window.innerHeight, //aspect ratio
-    0.1, //near plane
-    1000 //far plane
-);
+    var img1_input = document.getElementById('img1-input')
 
-camera.position.z = 5;
+    img1_input.addEventListener('change', async function(e) {
+        //file reader object
+        var userImage = e.target.files[0];
+        userImageURL = URL.createObjectURL( userImage );
+        console.log(userImageURL);
+        init(userImageURL)
+        return userImageURL;
+    });
+    // init(userImageURL);
 
-const renderer = new THREE.WebGLRenderer(
-    {antialias: true}
-);
-//END THREE.js MAIN ITEMS
-//texture variables
-const textureSuperior = 'textures/logo-main-B1.PNG';
-const textureLateral01 = 'textures/logo-main-B2.PNG';
-const textureLateral02 = 'textures/logo-main-B3.PNG';
+(function(){
+    //THREE.js - 3D Rendering
+    const scene = new THREE.Scene();
+    console.log('Hello!');
 
-//LOADERS: texture manipulation properties g0 here
-const loaderSide01 = new THREE.TextureLoader().load(textureSuperior);
-    loaderSide01.wrapS = THREE.RepeatWrapping;
-    loaderSide01.repeat.x = -1;
-const loaderSide01Inv = new THREE.TextureLoader().load(textureSuperior);
-    loaderSide01Inv.wrapS = THREE.RepeatWrapping;
-    loaderSide01Inv.repeat.x = -1;
-const loaderSide02 = new THREE.TextureLoader().load(textureLateral01);
-    loaderSide02.wrapS = THREE.RepeatWrapping;
-    loaderSide02.repeat.x = -1;
-    loaderSide02.center.set(.5, .5);
-    loaderSide02.rotation = THREE.Math.degToRad(180);
-const loaderSide02Inv = new THREE.TextureLoader().load(textureLateral01);
-    loaderSide02Inv.wrapS = THREE.RepeatWrapping;
-    loaderSide02Inv.repeat.x = -1;
-    loaderSide02Inv.center.set(.5, .5);
-    loaderSide02Inv.rotation = THREE.Math.degToRad(0);
-const loaderSide03 = new THREE.TextureLoader().load(textureLateral02);
-    loaderSide03.wrapS = THREE.RepeatWrapping;
-    loaderSide03.repeat.x = -1;
-    loaderSide03.center.set(.5, .5);
-    loaderSide03.rotation = THREE.Math.degToRad(0);
-const loaderSide03Inv = new THREE.TextureLoader().load(textureLateral02);
-    loaderSide03Inv.wrapS = THREE.RepeatWrapping;
-    loaderSide03Inv.repeat.x = -1;
-    loaderSide03Inv.center.set(.5, .5);
-    loaderSide03Inv.rotation = THREE.Math.degToRad(180);
+    const camera = new THREE.PerspectiveCamera(
+        75, //field-of-view
+        window.innerWidth/window.innerHeight, //aspect ratio
+        0.1, //near plane
+        1000 //far plane
+    );
 
-const cubeMaterials = [ 
-    new THREE.MeshPhongMaterial({ map: loaderSide03 }), 
-    new THREE.MeshPhongMaterial({ map: loaderSide03Inv }),
-    new THREE.MeshPhongMaterial({ map: loaderSide02 }), 
-    new THREE.MeshPhongMaterial({ map: loaderSide02Inv }), 
-    new THREE.MeshPhongMaterial({ map: loaderSide01 }),  
-    new THREE.MeshPhongMaterial({ map: loaderSide01Inv }),
-];
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer(
+        {antialias: true}
+    );
+    //END THREE.js MAIN ITEMS
+    //texture variables
+    if (!userImageURL) {
+        var textureSuperior = 'textures/logo-main-B1.PNG';
+    } else {
+        var textureSuperior = userImageURL;
+    }
+
+    const textureLateral01 = 'textures/logo-main-B2.PNG';
+    const textureLateral02 = 'textures/logo-main-B3.PNG';
+
+    //LOADERS: texture manipulation properties g0 here
+    const loaderSide01 = new THREE.TextureLoader().load(textureSuperior);
+        loaderSide01.wrapS = THREE.RepeatWrapping;
+        loaderSide01.repeat.x = -1;
+    const loaderSide01Inv = new THREE.TextureLoader().load(textureSuperior);
+        loaderSide01Inv.wrapS = THREE.RepeatWrapping;
+        loaderSide01Inv.repeat.x = -1;
+    const loaderSide02 = new THREE.TextureLoader().load(textureLateral01);
+        loaderSide02.wrapS = THREE.RepeatWrapping;
+        loaderSide02.repeat.x = -1;
+        loaderSide02.center.set(.5, .5);
+        loaderSide02.rotation = THREE.Math.degToRad(180);
+    const loaderSide02Inv = new THREE.TextureLoader().load(textureLateral01);
+        loaderSide02Inv.wrapS = THREE.RepeatWrapping;
+        loaderSide02Inv.repeat.x = -1;
+        loaderSide02Inv.center.set(.5, .5);
+        loaderSide02Inv.rotation = THREE.Math.degToRad(0);
+    const loaderSide03 = new THREE.TextureLoader().load(textureLateral02);
+        loaderSide03.wrapS = THREE.RepeatWrapping;
+        loaderSide03.repeat.x = -1;
+        loaderSide03.center.set(.5, .5);
+        loaderSide03.rotation = THREE.Math.degToRad(0);
+    const loaderSide03Inv = new THREE.TextureLoader().load(textureLateral02);
+        loaderSide03Inv.wrapS = THREE.RepeatWrapping;
+        loaderSide03Inv.repeat.x = -1;
+        loaderSide03Inv.center.set(.5, .5);
+        loaderSide03Inv.rotation = THREE.Math.degToRad(180);
+
+    const cubeMaterials = [ 
+        new THREE.MeshPhongMaterial({ map: loaderSide03 }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide03Inv }),
+        new THREE.MeshPhongMaterial({ map: loaderSide02 }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide02Inv }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide01 }),  
+        new THREE.MeshPhongMaterial({ map: loaderSide01Inv }),
+    ];
 
 
-//wrap and repeat offset auto-inversion of image by three.js
-// texture.wrapS = THREE.RepeatWrapping;
-// texture.repeat.x = -1;
 
-//background color
-renderer.setClearColor("#1c1c1c");
+    //wrap and repeat offset auto-inversion of image by three.js
+    // texture.wrapS = THREE.RepeatWrapping;
+    // texture.repeat.x = -1;
 
-//sets canvas size
-renderer.setSize(window.innerWidth, window.innerHeight);
+    //background color
+    renderer.setClearColor("#1c1c1c");
 
-//appemds to DOM
-document.body.appendChild(renderer.domElement);
-
-//resize canvas with window resize
-window.addEventListener('resize', () => {
+    //sets canvas size
     renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
 
-    camera.updateProjectionMatrix();
-})
+    //appemds to DOM
+    document.body.appendChild(renderer.domElement);
 
-//shape
-var geometry = new THREE.BoxGeometry(
-    1.5, //radius
-    1.5, //widthSegment
-    1.5 //heightSegment
-);
+    //resize canvas with window resize
+    window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
 
-//combines geometry and material
-var mesh = new THREE.Mesh(geometry, cubeMaterials);
+        camera.updateProjectionMatrix();
+    })
 
-//position object
-mesh.position.x = 1.8;
-mesh.position.y = 0;
-mesh.position.z = 0;
+    //shape
+    var geometry = new THREE.BoxGeometry(
+        1.5, //radius
+        1.5, //widthSegment
+        1.5 //heightSegment
+    );
 
-//rotate object (fixed)
-mesh.rotation.x = 90;
-mesh.rotation.y = 0;
-mesh.rotation.z = 0;
+    //combines geometry and material
+    var mesh = new THREE.Mesh(geometry, cubeMaterials);
 
-scene.add(mesh);
+    //position object
+    mesh.position.x = 1.8;
+    mesh.position.y = 0;
+    mesh.position.z = 0;
+
+    //rotate object (fixed)
+    mesh.rotation.x = 90;
+    mesh.rotation.y = 0;
+    mesh.rotation.z = 0;
+
+    scene.add(mesh);
 
 
-//Lighting
-var overheadLight = new THREE.PointLight(
-    0xFFFFFF, //color
-    1.6, //intensity
-    500 //distance
+    //Lighting
+    var overheadLight = new THREE.PointLight(
+        0xFFFFFF, //color
+        1.6, //intensity
+        500 //distance
+        )
+
+    overheadLight.position.set(
+        0, //x-value
+        30, //y-value
+        70 //z-value
     )
 
-overheadLight.position.set(
-    0, //x-value
-    30, //y-value
-    70 //z-value
-)
+    var bLeftLight = new THREE.PointLight(
+        0xFFFFFF, //color
+        .6, //intensity
+        500 //distance
+        )
 
-var bLeftLight = new THREE.PointLight(
-    0xFFFFFF, //color
-    .6, //intensity
-    500 //distance
+    bLeftLight.position.set(
+        -40, //x-value
+        0, //y-value
+        20 //z-value
     )
 
-bLeftLight.position.set(
-    -40, //x-value
-    0, //y-value
-    20 //z-value
-)
+    var bRightLight = new THREE.PointLight(
+        0xFFFFFF, //color
+        .6, //intensity
+        500 //distance
+        )
 
-var bRightLight = new THREE.PointLight(
-    0xFFFFFF, //color
-    .6, //intensity
-    500 //distance
+    bRightLight.position.set(
+        40, //x-value
+        0, //y-value
+        0 //z-value
     )
 
-bRightLight.position.set(
-    40, //x-value
-    0, //y-value
-    0 //z-value
-)
+    scene.add(overheadLight, bLeftLight, bRightLight);
 
-scene.add(overheadLight, bLeftLight, bRightLight);
+    //initial position outside of render function
+    const renderPosition = mesh.position.y;
+    //renders at 60 fps
+    var render = function() {
+        //re-sizes rendered object with window
+        requestAnimationFrame(render);
 
-//initial position outside of render function
-const renderPosition = mesh.position.y;
-//renders at 60 fps
-var render = function() {
-    //re-sizes rendered object with window
-    requestAnimationFrame(render);
+        //position object (animated)
+        // mesh.position.x += .005;
+        // mesh.position.y += .005;
+        // mesh.position.z += .005;
 
-    //position object (animated)
-    // mesh.position.x += .005;
-    // mesh.position.y += .005;
-    // mesh.position.z += .005;
+        // vertical hover (BROKEN)
+        // if (mesh.position.y = renderPosition) {
+        //     mesh.position.y += .005;
+        // }
+        // else if (mesh.position.y > (renderPosition + .050)) {
+        //     mesh.position.y -= .005;
+        // }
 
-    // vertical hover (BROKEN)
-    // if (mesh.position.y = renderPosition) {
-    //     mesh.position.y += .005;
-    // }
-    // else if (mesh.position.y > (renderPosition + .050)) {
-    //     mesh.position.y -= .005;
-    // }
+        //rotate object (animated)
+        // mesh.rotation.x += .005;
+        // mesh.rotation.y += .005;
+        mesh.rotation.z += .005;
 
-    //rotate object (animated)
-    // mesh.rotation.x += .005;
-    // mesh.rotation.y += .005;
-    mesh.rotation.z += .005;
+        //renders object
+        renderer.render(scene, camera);
+    }
 
-    //renders object
-    renderer.render(scene, camera);
+    render();
+
+
+})()
+
+function init() {
+    console.log(userImageURL);
+    //THREE.js - 3D Rendering
+    const scene = new THREE.Scene();
+    console.log('Hello!');
+
+    const camera = new THREE.PerspectiveCamera(
+        75, //field-of-view
+        window.innerWidth/window.innerHeight, //aspect ratio
+        0.1, //near plane
+        1000 //far plane
+    );
+
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer(
+        {antialias: true}
+    );
+    //END THREE.js MAIN ITEMS
+    //texture variables
+    if (!userImageURL) {
+        var textureSuperior = 'textures/logo-main-B1.PNG';
+    } else {
+        var textureSuperior = userImageURL;
+    }
+
+    const textureLateral01 = 'textures/logo-main-B2.PNG';
+    const textureLateral02 = 'textures/logo-main-B3.PNG';
+
+    //LOADERS: texture manipulation properties g0 here
+    const loaderSide01 = new THREE.TextureLoader().load(textureSuperior);
+        loaderSide01.wrapS = THREE.RepeatWrapping;
+        loaderSide01.repeat.x = -1;
+    const loaderSide01Inv = new THREE.TextureLoader().load(textureSuperior);
+        loaderSide01Inv.wrapS = THREE.RepeatWrapping;
+        loaderSide01Inv.repeat.x = -1;
+    const loaderSide02 = new THREE.TextureLoader().load(textureLateral01);
+        loaderSide02.wrapS = THREE.RepeatWrapping;
+        loaderSide02.repeat.x = -1;
+        loaderSide02.center.set(.5, .5);
+        loaderSide02.rotation = THREE.Math.degToRad(180);
+    const loaderSide02Inv = new THREE.TextureLoader().load(textureLateral01);
+        loaderSide02Inv.wrapS = THREE.RepeatWrapping;
+        loaderSide02Inv.repeat.x = -1;
+        loaderSide02Inv.center.set(.5, .5);
+        loaderSide02Inv.rotation = THREE.Math.degToRad(0);
+    const loaderSide03 = new THREE.TextureLoader().load(textureLateral02);
+        loaderSide03.wrapS = THREE.RepeatWrapping;
+        loaderSide03.repeat.x = -1;
+        loaderSide03.center.set(.5, .5);
+        loaderSide03.rotation = THREE.Math.degToRad(0);
+    const loaderSide03Inv = new THREE.TextureLoader().load(textureLateral02);
+        loaderSide03Inv.wrapS = THREE.RepeatWrapping;
+        loaderSide03Inv.repeat.x = -1;
+        loaderSide03Inv.center.set(.5, .5);
+        loaderSide03Inv.rotation = THREE.Math.degToRad(180);
+
+    const cubeMaterials = [ 
+        new THREE.MeshPhongMaterial({ map: loaderSide03 }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide03Inv }),
+        new THREE.MeshPhongMaterial({ map: loaderSide02 }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide02Inv }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide01 }),  
+        new THREE.MeshPhongMaterial({ map: loaderSide01Inv }),
+    ];
+
+
+
+    //wrap and repeat offset auto-inversion of image by three.js
+    // texture.wrapS = THREE.RepeatWrapping;
+    // texture.repeat.x = -1;
+
+    //background color
+    renderer.setClearColor("#1c1c1c");
+
+    //sets canvas size
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    //appemds to DOM
+    document.body.appendChild(renderer.domElement);
+
+    //resize canvas with window resize
+    window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+
+        camera.updateProjectionMatrix();
+    })
+
+    //shape
+    var geometry = new THREE.BoxGeometry(
+        1.5, //radius
+        1.5, //widthSegment
+        1.5 //heightSegment
+    );
+
+    //combines geometry and material
+    var mesh = new THREE.Mesh(geometry, cubeMaterials);
+
+    //position object
+    mesh.position.x = 1.8;
+    mesh.position.y = 0;
+    mesh.position.z = 0;
+
+    //rotate object (fixed)
+    mesh.rotation.x = 90;
+    mesh.rotation.y = 0;
+    mesh.rotation.z = 0;
+
+    scene.add(mesh);
+
+
+    //Lighting
+    var overheadLight = new THREE.PointLight(
+        0xFFFFFF, //color
+        1.6, //intensity
+        500 //distance
+        )
+
+    overheadLight.position.set(
+        0, //x-value
+        30, //y-value
+        70 //z-value
+    )
+
+    var bLeftLight = new THREE.PointLight(
+        0xFFFFFF, //color
+        .6, //intensity
+        500 //distance
+        )
+
+    bLeftLight.position.set(
+        -40, //x-value
+        0, //y-value
+        20 //z-value
+    )
+
+    var bRightLight = new THREE.PointLight(
+        0xFFFFFF, //color
+        .6, //intensity
+        500 //distance
+        )
+
+    bRightLight.position.set(
+        40, //x-value
+        0, //y-value
+        0 //z-value
+    )
+
+    scene.add(overheadLight, bLeftLight, bRightLight);
+
+    //initial position outside of render function
+    const renderPosition = mesh.position.y;
+    //renders at 60 fps
+    var render = function() {
+        //re-sizes rendered object with window
+        requestAnimationFrame(render);
+
+        //position object (animated)
+        // mesh.position.x += .005;
+        // mesh.position.y += .005;
+        // mesh.position.z += .005;
+
+        // vertical hover (BROKEN)
+        // if (mesh.position.y = renderPosition) {
+        //     mesh.position.y += .005;
+        // }
+        // else if (mesh.position.y > (renderPosition + .050)) {
+        //     mesh.position.y -= .005;
+        // }
+
+        //rotate object (animated)
+        // mesh.rotation.x += .005;
+        // mesh.rotation.y += .005;
+        mesh.rotation.z += .005;
+
+        //renders object
+        renderer.render(scene, camera);
+    }
+
+    render();
+
 }
 
-render();
+// init();
 
 //this.tl = new TimelineMax().delay(.3);
 //this.tl.to(this.mesh.scale, 1, {x: 2, ease: Expo.easeOut})
