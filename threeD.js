@@ -7,13 +7,8 @@ img1_input.addEventListener('change', function(e) {
     var userImage = e.target.files[0];
     userImageURL = URL.createObjectURL( userImage );
     console.log(userImageURL);
-    scene = null;
     init(userImageURL);
 })
-
-function clearCanvas() {
-    renderer.clear();
-}
 
 function init(userimg1) {
     var testURL = userimg1;
@@ -43,40 +38,40 @@ function init(userimg1) {
         
     // }
 
-    const textureLateral01 = 'textures/logo-main-B2.PNG';
+    var textureLateral01 = 'textures/logo-main-B2.PNG';
 
-    const textureLateral02 = 'textures/logo-main-B3.PNG';
+    var textureLateral02 = 'textures/logo-main-B3.PNG';
 
     //LOADERS: texture manipulation properties g0 here
-    const loaderSide01 = new THREE.TextureLoader().setCrossOrigin("").load(textureSuperior);
+    var loaderSide01 = new THREE.TextureLoader().setCrossOrigin("").load(textureSuperior);
         console.log(textureSuperior);
         loaderSide01.wrapS = THREE.RepeatWrapping;
         loaderSide01.repeat.x = -1;
-    const loaderSide01Inv = new THREE.TextureLoader().load(textureSuperior);
+    var loaderSide01Inv = new THREE.TextureLoader().load(textureSuperior);
         loaderSide01Inv.wrapS = THREE.RepeatWrapping;
         loaderSide01Inv.repeat.x = -1;
-    const loaderSide02 = new THREE.TextureLoader().load(textureLateral01);
+    var loaderSide02 = new THREE.TextureLoader().load(textureLateral01);
         loaderSide02.wrapS = THREE.RepeatWrapping;
         loaderSide02.repeat.x = -1;
         loaderSide02.center.set(.5, .5);
         loaderSide02.rotation = THREE.Math.degToRad(180);
-    const loaderSide02Inv = new THREE.TextureLoader().load(textureLateral01);
+    var loaderSide02Inv = new THREE.TextureLoader().load(textureLateral01);
         loaderSide02Inv.wrapS = THREE.RepeatWrapping;
         loaderSide02Inv.repeat.x = -1;
         loaderSide02Inv.center.set(.5, .5);
         loaderSide02Inv.rotation = THREE.Math.degToRad(0);
-    const loaderSide03 = new THREE.TextureLoader().load(textureLateral02);
+    var loaderSide03 = new THREE.TextureLoader().load(textureLateral02);
         loaderSide03.wrapS = THREE.RepeatWrapping;
         loaderSide03.repeat.x = -1;
         loaderSide03.center.set(.5, .5);
         loaderSide03.rotation = THREE.Math.degToRad(0);
-    const loaderSide03Inv = new THREE.TextureLoader().load(textureLateral02);
+    var loaderSide03Inv = new THREE.TextureLoader().load(textureLateral02);
         loaderSide03Inv.wrapS = THREE.RepeatWrapping;
         loaderSide03Inv.repeat.x = -1;
         loaderSide03Inv.center.set(.5, .5);
         loaderSide03Inv.rotation = THREE.Math.degToRad(180);
 
-    const cubeMaterials = [ 
+    var cubeMaterials = [ 
         new THREE.MeshPhongMaterial({ map: loaderSide03 }), 
         new THREE.MeshPhongMaterial({ map: loaderSide03Inv }),
         new THREE.MeshPhongMaterial({ map: loaderSide02 }), 
@@ -200,8 +195,6 @@ function init(userimg1) {
     }
 
     render();
-
-    return scene;
 }
 
 init();
