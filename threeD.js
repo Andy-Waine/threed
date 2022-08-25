@@ -1,18 +1,31 @@
-var userImageURL = '';
+var img1URL = '';
+var img2URL = '';
 var scene;
 var img1_input = document.getElementById('img1-input')
+var img2_input = document.getElementById('img2-input')
 
 img1_input.addEventListener('change', function(e) {
     //file reader object
     var userImage = e.target.files[0];
-    userImageURL = URL.createObjectURL( userImage );
-    console.log(userImageURL);
-    init(userImageURL);
+    img1URL = URL.createObjectURL( userImage );
+    console.log(img1URL);
+    init(img1URL, img2URL);
 })
 
-function init(userimg1) {
-    var testURL = userimg1;
-    console.log(testURL);
+img2_input.addEventListener('change', function(e) {
+    //file reader object
+    var userImage = e.target.files[0];
+    img2URL = URL.createObjectURL( userImage );
+    console.log(img2URL);
+    init(img1URL, img2URL);
+})
+
+
+
+function init(userimg1, userimg2) {
+    img1URL = userimg1;
+    img2URL = userimg2;
+    console.log(img1URL);
     //THREE.js - 3D Rendering
     scene = new THREE.Scene();
     console.log('Hello!');
@@ -34,13 +47,13 @@ function init(userimg1) {
     // if (!userImageURL) {
     //     var textureSuperior = 'textures/logo-main-B1.PNG';
     // } else {
-        var textureSuperior = testURL;
+    var textureSuperior = img1URL;
         
     // }
 
     var textureLateral01 = 'textures/logo-main-B2.PNG';
 
-    var textureLateral02 = 'textures/logo-main-B3.PNG';
+    var textureLateral02 = img2URL;
 
     //LOADERS: texture manipulation properties g0 here
     var loaderSide01 = new THREE.TextureLoader().setCrossOrigin("").load(textureSuperior);
