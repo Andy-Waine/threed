@@ -1,8 +1,11 @@
 var img1URL = '';
 var img2URL = '';
 var scene;
-var img1_input = document.getElementById('img1-input')
-var img2_input = document.getElementById('img2-input')
+var img1_input = document.getElementById('img1-input');
+var img2_input = document.getElementById('img2-input');
+var colorSide03;
+var colorSide02;
+var colorSide01;
 
 img1_input.addEventListener('change', function(e) {
     //file reader object
@@ -42,18 +45,21 @@ function init(userimg1, userimg2) {
     const renderer = new THREE.WebGLRenderer(
         {antialias: true}
     );
-    //END THREE.js MAIN ITEMS
-    //texture variables
-    // if (!userImageURL) {
-    //     var textureSuperior = 'textures/logo-main-B1.PNG';
-    // } else {
-    var textureSuperior = img1URL;
-        
-    // }
 
+
+    var textureSuperior;
+    if (!img1URL) {
+        textureSuperior = 'textures/logo-main-B1.PNG';
+    } else {
+        textureSuperior = img1URL;
+    }
     var textureLateral01 = 'textures/logo-main-B2.PNG';
-
-    var textureLateral02 = img2URL;
+    var textureLateral02;
+    if (!img2URL) {
+        textureLateral02 = 'textures/logo-main-B3.PNG';
+    } else {
+        textureLateral02 = img2URL;
+    }
 
     //LOADERS: texture manipulation properties g0 here
     var loaderSide01 = new THREE.TextureLoader().setCrossOrigin("").load(textureSuperior);
@@ -77,21 +83,25 @@ function init(userimg1, userimg2) {
         loaderSide03.wrapS = THREE.RepeatWrapping;
         loaderSide03.repeat.x = -1;
         loaderSide03.center.set(.5, .5);
-        loaderSide03.rotation = THREE.Math.degToRad(0);
+        loaderSide03.rotation = THREE.Math.degToRad(90);
     var loaderSide03Inv = new THREE.TextureLoader().load(textureLateral02);
         loaderSide03Inv.wrapS = THREE.RepeatWrapping;
         loaderSide03Inv.repeat.x = -1;
         loaderSide03Inv.center.set(.5, .5);
-        loaderSide03Inv.rotation = THREE.Math.degToRad(180);
+        loaderSide03Inv.rotation = THREE.Math.degToRad(270);
+
+
+
 
     var cubeMaterials = [ 
-        new THREE.MeshPhongMaterial({ map: loaderSide03 }), 
-        new THREE.MeshPhongMaterial({ map: loaderSide03Inv }),
-        new THREE.MeshPhongMaterial({ map: loaderSide02 }), 
-        new THREE.MeshPhongMaterial({ map: loaderSide02Inv }), 
-        new THREE.MeshPhongMaterial({ map: loaderSide01 }),  
-        new THREE.MeshPhongMaterial({ map: loaderSide01Inv }),
+        new THREE.MeshPhongMaterial({ map: loaderSide03, color: colorSide03}), 
+        new THREE.MeshPhongMaterial({ map: loaderSide03Inv, color: colorSide03}),
+        new THREE.MeshPhongMaterial({ map: loaderSide02, color: colorSide02 }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide02Inv, color: colorSide02 }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide01, color: colorSide01 }),  
+        new THREE.MeshPhongMaterial({ map: loaderSide01Inv, color: colorSide01 }),
     ];
+
 
 
 
