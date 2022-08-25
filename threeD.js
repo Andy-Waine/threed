@@ -1,5 +1,5 @@
 var userImageURL = '';
-
+var scene;
 var img1_input = document.getElementById('img1-input')
 
 img1_input.addEventListener('change', function(e) {
@@ -7,14 +7,19 @@ img1_input.addEventListener('change', function(e) {
     var userImage = e.target.files[0];
     userImageURL = URL.createObjectURL( userImage );
     console.log(userImageURL);
+    scene = null;
     init(userImageURL);
 })
+
+function clearCanvas() {
+    renderer.clear();
+}
 
 function init(userimg1) {
     var testURL = userimg1;
     console.log(testURL);
     //THREE.js - 3D Rendering
-    const scene = new THREE.Scene();
+    scene = new THREE.Scene();
     console.log('Hello!');
 
     const camera = new THREE.PerspectiveCamera(
@@ -196,6 +201,7 @@ function init(userimg1) {
 
     render();
 
+    return scene;
 }
 
 init();
