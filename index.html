@@ -6,49 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CubeGen</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/> <!--Color Picker (pickr) 'monolith' theme -->
     <link rel="stylesheet" href="./style/style.css">
 </head>
-<div class="main-wrapper">
-    <div class="menu col-4">
-        <div class="menu-header">
-            Customization
-        </div>
-        <div class="menu-item">
-            <span>Image 1 (Superior)</span>
-            <label>
-                <input type="file" id="img1-input" class="hidden" accept="image/*">
+<body>
+    <div class="main-wrapper">
+        <div class="menu col-4">
+            <div class="menu-header">
+                Customization
+            </div>
+            <div class="menu-item">
+                <span>Image 1 (Superior)</span>
+                <label>
+                    <input type="file" id="img1-input" class="hidden" accept="image/*">
+                    <span><img src="./svg/img-upload.svg" class="svg-btn" height="50" width="50" /></span>
+                </label>
+            </div>
+            <div class="menu-item">
+                <span>Image 2 (Lateral)</span>
+                <input type="file" id="img2-input" class="hidden" accept="image/*">
                 <span><img src="./svg/img-upload.svg" class="svg-btn" height="50" width="50" /></span>
-            </label>
+            </div>
+            <div class="menu-item">
+                <span>Background Color</span>
+                <span></span>
+            </div>
+            <div class="menu-item">
+                <span>Accent 1 Color</span>
+                <div class="color-picker"></div>
+                <span></span>
+            </div>
+            <div class="menu-item">
+                <span>Accent 2 Color</span>
+                <span></span>
+            </div>
+            <button class="button-mint">Mint NFT</button>
         </div>
-        <div class="menu-item">
-            <span>Image 2 (Lateral)</span>
-            <input type="file" id="img2-input" class="hidden" accept="image/*">
-            <span><img src="./svg/img-upload.svg" class="svg-btn" height="50" width="50" /></span>
-        </div>
-        <div class="menu-item">
-            <span>Background Color</span>
-            <span></span>
-        </div>
-        <div class="menu-item">
-            <span>Accent 1 Color</span>
-            <span></span>
-        </div>
-        <div class="menu-item">
-            <span>Accent 2 Color</span>
-            <span></span>
-        </div>
-        <button class="button-mint">Mint NFT</button>
+
+        <!-- FOOTER -->
+        <div class="footer"></div>
     </div>
 
-    <!-- FOOTER -->
-    <div class="footer"></div>
-</div>
-<body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.5/dat.gui.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <script src="./threeD.js"></script>
     <script src="./index.js"></script>
+    <script src="./pickr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

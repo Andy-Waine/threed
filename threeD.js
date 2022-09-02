@@ -220,7 +220,5 @@ function init(userimg1, userimg2) {
     render();
 }
 
-init();
 
-//this.tl = new TimelineMax().delay(.3);
-//this.tl.to(this.mesh.scale, 1, {x: 2, ease: Expo.easeOut})
+init();
