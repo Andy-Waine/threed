@@ -6,6 +6,8 @@ var img2_input = document.getElementById('img2-input');
 var colorSide03;
 var colorSide02;
 var colorSide01;
+var colorSelected = '';
+
 
 img1_input.addEventListener('change', function(e) {
     //file reader object
@@ -23,15 +25,63 @@ img2_input.addEventListener('change', function(e) {
     init(img1URL, img2URL);
 })
 
+function runPickr() {
+        const pickr = Pickr.create({
+        el: '.color-picker',
+        theme: 'monolith', // or 'classic', or 'nano'
 
+        swatches: [
+            'rgba(55, 91, 210, 1)', //CL blue
+            'rgba(255, 255, 255, 1)', //white
+            'rgba(245, 247, 253, 1)', //zircon
+            'rgba(223, 231, 251, 1)', //lavender
+            'rgba(160, 179, 242, 1)', //perano
+            'rgba(26, 43, 107, 1)', //biscay
+            'rgba(12, 22, 44, 1)', //mirage
+            'rgba(255, 94, 87, 1)', //red
+            'rgba(255, 221, 89, 1)', //yellow
+            'rgba(5, 196, 107, 1)', //green
+            'rgba(139, 195, 74, 1)',
+            'rgba(205, 220, 57, 1)',
+            'rgba(255, 235, 59, 1)',
+            'rgba(0, 0, 0, 1)'
+        ],
+
+        components: {
+
+            // Main components
+            preview: true,
+            opacity: false,
+            hue: true,
+
+            // Input / output Options
+            interaction: {
+                hex: true,
+                rgba: true,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: true,
+                clear: false,
+                save: true
+            }
+        }
+    });
+
+    pickr.on('save', (...args) => {
+        colorSelected = args[0].toRGBA();
+        console.log(colorSelected);
+    })
+}
 
 function init(userimg1, userimg2) {
+    
+
     img1URL = userimg1;
     img2URL = userimg2;
     console.log(img1URL);
     //THREE.js - 3D Rendering
     scene = new THREE.Scene();
-    console.log('Hello!');
 
     const camera = new THREE.PerspectiveCamera(
         75, //field-of-view
@@ -220,5 +270,5 @@ function init(userimg1, userimg2) {
     render();
 }
 
-
+runPickr();
 init();
