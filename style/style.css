@@ -74,6 +74,11 @@ canvas {
     cursor: pointer;
 }
 
+.test-swatch {
+    height: 50px;
+    width: 50px;
+}
+
 .hidden {
     display: none;
 }

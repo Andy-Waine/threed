@@ -6,7 +6,7 @@ var img2_input = document.getElementById('img2-input');
 var colorSide03;
 var colorSide02;
 var colorSide01;
-var colorSelected = '';
+var backgroundColor = '';
 
 
 img1_input.addEventListener('change', function(e) {
@@ -14,7 +14,7 @@ img1_input.addEventListener('change', function(e) {
     var userImage = e.target.files[0];
     img1URL = URL.createObjectURL( userImage );
     console.log(img1URL);
-    init(img1URL, img2URL);
+    init(img1URL, img2URL, backgroundColor);
 })
 
 img2_input.addEventListener('change', function(e) {
@@ -22,7 +22,7 @@ img2_input.addEventListener('change', function(e) {
     var userImage = e.target.files[0];
     img2URL = URL.createObjectURL( userImage );
     console.log(img2URL);
-    init(img1URL, img2URL);
+    init(img1URL, img2URL, backgroundColor);
 })
 
 function runPickr() {
@@ -69,12 +69,18 @@ function runPickr() {
     });
 
     pickr.on('save', (...args) => {
-        colorSelected = args[0].toRGBA();
-        console.log(colorSelected);
+        backgroundColorArray = args[0].toRGBA();
+        backgroundColorArray = backgroundColorArray.map(function(input){
+            return Number(Math.round(input));
+        });
+        // console.log(backgroundColor);
+        backgroundColor = `rgba(${backgroundColorArray[0]}, ${backgroundColorArray[1]}, ${backgroundColorArray[2]}, ${backgroundColorArray[3]})`;
+        console.log(backgroundColor);
+        init(img1URL, img2URL, backgroundColor);
     })
 }
 
-function init(userimg1, userimg2) {
+function init(userimg1, userimg2, backgroundColor) {
     
 
     img1URL = userimg1;
@@ -144,7 +150,7 @@ function init(userimg1, userimg2) {
 
 
     var cubeMaterials = [ 
-        new THREE.MeshPhongMaterial({ map: loaderSide03, color: colorSide03}), 
+        new THREE.MeshPhongMaterial({ map: loaderSide03, color: backgroundColor}), 
         new THREE.MeshPhongMaterial({ map: loaderSide03Inv, color: colorSide03}),
         new THREE.MeshPhongMaterial({ map: loaderSide02, color: colorSide02 }), 
         new THREE.MeshPhongMaterial({ map: loaderSide02Inv, color: colorSide02 }), 
