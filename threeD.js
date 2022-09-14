@@ -109,7 +109,7 @@ function init(userimg1, userimg2, backgroundColor) {
     } else {
         textureSuperior = img1URL;
     }
-    var textureLateral01 = 'textures/logo-main-B2.PNG';
+    var textureLateral01 = 'textures/LinkColor.svg';
     var textureLateral02;
     if (!img2URL) {
         textureLateral02 = 'textures/logo-main-B3.PNG';
