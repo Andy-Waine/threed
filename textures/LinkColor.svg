@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg width="300px" height="300px" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
-  <rect width="300" height="300" style="stroke: rgb(245, 247, 253); fill: rgb(245, 247, 253);"/>
-  <g transform="matrix(0.355174, 0, 0, 0.301604, 7.138355, 16.292763)" style="">
-    <title>Layer 1</title>
+  <rect width="300" height="300" style="stroke: rgb(245, 247, 253); fill: rgb(245, 247, 253);"/> <!-- Background -->
+  <g transform="matrix(0.355174, 0, 0, 0.301604, 7.138355, 16.292763)" style=""><!--Top Bracket-->
+    <title>Top Bracket</title>
     <line stroke-width="15" stroke="#000" id="svg_7" y2="70.66667" x2="191.83331" y1="70.66667" x1="114.8333" fill="none"/>
     <path stroke="#000000" id="svg_10" d="m116.33338,77.83332c-3.22282,0 -5.83331,-3.20717 -5.83331,-7.16664c0,-3.95947 2.61049,-7.16664 5.83331,-7.16664c3.22282,0 5.83331,3.20717 5.83331,7.16664c0,3.95947 -2.61049,7.16664 -5.83331,7.16664z" opacity="undefined" fill="#000000"/>
     <ellipse transform="rotate(1.87383 190.344 70.6725)" stroke="#000000" ry="6.99972" rx="6.86049" id="svg_16" cy="70.67248" cx="190.34414" fill="#000000"/>
@@ -22,8 +22,17 @@
       <ellipse transform="rotate(143.528 51.2572 119.654)" stroke="#000000" ry="6.83418" rx="9.23271" id="svg_38" cy="119.65423" cx="51.25747" fill="#000000"/>
     </g>
   </g>
+  <g transform="matrix(1, 0, 0, 1, -38.851002, 41.637001)">
+    <title>Horizontal Lines</title>
+    <rect x="60" y="35" width="175" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
+    <rect x="60" y="65" width="265" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
+    <rect x="60" y="95" width="265" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
+    <rect x="60" y="125" width="115" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
+    <rect x="60" y="155" width="175" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
+    <rect x="60" y="185" width="85" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
+  </g>
   <g transform="matrix(0.355174, 0, 0, 0.296242, 7.138355, 247.047989)" style="">
-    <title>Layer 1</title>
+    <title>Bottom Bracket</title>
     <line stroke-width="15" stroke="#000" id="line-1" y2="70.666" x2="221.915" y1="67.571" x1="110.744" fill="none" style="" transform="matrix(-0.438434, 0.988127, -0.817481, -0.438434, 285.217215, -60.786798)" bx:origin="0.442 0"/>
     <path stroke="#000000" id="path-1" d="M 130.353 133.325 C 127.131 133.325 124.52 130.118 124.52 126.159 C 124.52 122.199 127.131 118.992 130.353 118.992 C 133.576 118.992 136.187 122.199 136.187 126.159 C 136.187 130.118 133.576 133.325 130.353 133.325 Z" opacity="undefined" fill="#000000"/>
     <ellipse transform="matrix(0.999465, 0.032699, -0.032699, 0.999465, -6.467155, -58.595115)" stroke="#000000" ry="7.015" rx="6.393" id="ellipse-1" cy="70.672" cx="190.344" fill="#000000" style=""/>
@@ -43,12 +52,5 @@
       <ellipse transform="rotate(143.528 51.2572 119.654)" stroke="#000000" ry="6.83418" rx="9.23271" id="ellipse-8" cy="119.65423" cx="51.25747" fill="#000000"/>
     </g>
   </g>
-  <g transform="matrix(1, 0, 0, 1, -38.851002, 41.637001)">
-    <rect x="60" y="35" width="175" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
-    <rect x="60" y="65" width="265" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
-    <rect x="60" y="95" width="265" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
-    <rect x="60" y="125" width="115" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
-    <rect x="60" y="155" width="175" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
-    <rect x="60" y="185" width="85" height="5" style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(2, 156, 253);"/>
-  </g>
+
 </svg>

@@ -71,7 +71,7 @@ function runPickr() {
     pickr.on('save', (...args) => {
         backgroundColorArray = args[0].toRGBA();
         backgroundColorArray = backgroundColorArray.map(function(input){
-            return Number(Math.round(input));
+            return Number(Math.round(input)); //Needed, .toRGBA() leaves value w/ trailing decimals, not recognized by three.js
         });
         // console.log(backgroundColor);
         backgroundColor = `rgba(${backgroundColorArray[0]}, ${backgroundColorArray[1]}, ${backgroundColorArray[2]}, ${backgroundColorArray[3]})`;
