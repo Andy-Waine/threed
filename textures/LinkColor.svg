@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="300px" height="300px" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
-  <rect width="300" height="300" style="stroke: rgb(245, 247, 253); fill: rgb(245, 247, 253);"/> <!-- Background -->
+<svg id = "svgLink" width="300px" height="300px" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <rect id="rect" width="300" height="300" stroke="rgb(245, 247, 253)" fill="rgba(245, 247, 253, 1)"/> <!-- Background -->
   <g transform="matrix(0.355174, 0, 0, 0.301604, 7.138355, 16.292763)" style=""><!--Top Bracket-->
     <title>Top Bracket</title>
     <line stroke-width="15" stroke="#000" id="svg_7" y2="70.66667" x2="191.83331" y1="70.66667" x1="114.8333" fill="none"/>

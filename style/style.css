@@ -1,3 +1,8 @@
+:root {
+    --primary: #ac3d39;
+    --red-color-10: #bf443f;
+  }
+
 html {
     overflow:   hidden;
     height: 100%;
@@ -72,6 +77,10 @@ canvas {
 
 .svg-button {
     cursor: pointer;
+}
+
+object {
+    fill: #ac3d39;
 }
 
 .test-swatch {
