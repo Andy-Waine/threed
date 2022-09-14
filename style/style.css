@@ -1,11 +1,10 @@
-:root {
-    --primary: #ac3d39;
-    --red-color-10: #bf443f;
-  }
+
 
 html {
     overflow:   hidden;
     height: 100%;
+        --primary: rgba(245, 247, 0, 1);
+        --red-color-10: #bf443f;
   }
   ::-webkit-scrollbar {
       width: 0px;
@@ -81,6 +80,11 @@ canvas {
 
 object {
     fill: #ac3d39;
+}
+
+.rect {
+    stroke: rgb(245, 247, 253);
+    fill: rgb(0, 247, 3) !important;
 }
 
 .test-swatch {
