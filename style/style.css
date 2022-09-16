@@ -1,4 +1,8 @@
 
+:root {
+    --bg-base: rgba(245, 247, 253, 1);
+}
+
 
 html {
     overflow:   hidden;
@@ -84,7 +88,7 @@ object {
 
 .rect {
     stroke: rgb(245, 247, 253);
-    fill: rgb(0, 247, 3) !important;
+    fill: var(--bg-base) !important;
 }
 
 .test-swatch {

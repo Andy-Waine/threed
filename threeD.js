@@ -79,6 +79,7 @@ function runPickr() {
         backgroundColor = `rgba(${backgroundColorArray[0]}, ${backgroundColorArray[1]}, ${backgroundColorArray[2]}, ${backgroundColorArray[3]})`;
         console.log(backgroundColor);
         console.log(LinkColorSVG)
+        $("#rect").css("fill", backgroundColor);
         // rect.element.style.fill = backgroundColor;
         console.log(rect);
    
