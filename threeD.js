@@ -5,6 +5,7 @@ var img1_input = document.getElementById('img1-input');
 var img2_input = document.getElementById('img2-input');
 var LinkColorSVG = document.getElementById('svgLink');
 var rect = document.getElementById('rect');
+var r = document.querySelector(':root');
 var colorSide03;
 var colorSide02;
 var colorSide01;
@@ -79,6 +80,7 @@ function runPickr() {
         backgroundColor = `rgba(${backgroundColorArray[0]}, ${backgroundColorArray[1]}, ${backgroundColorArray[2]}, ${backgroundColorArray[3]})`;
         console.log(backgroundColor);
         console.log(LinkColorSVG)
+        r.style.setProperty('--bg-base', backgroundColor);
         $("#rect").css("fill", backgroundColor);
         // rect.element.style.fill = backgroundColor;
         console.log(rect);
