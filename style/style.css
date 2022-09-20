@@ -88,6 +88,7 @@ object {
     fill: #ac3d39;
 }
 
+/* START Internal SVG Classes */
 .rect {
     stroke: var(--bg-base) !important; 
     fill: var(--bg-base) !important; 
@@ -97,6 +98,14 @@ object {
     stroke: var(--acc1-base) !important; 
     fill: var(--acc1-base) !important; 
 }
+
+.line {
+    stroke: var(--acc2-base) !important; 
+    fill: var(--acc2-base) !important; 
+}
+/* END Internal SVG Classes */
+
+
 
 .test-swatch {
     height: 50px;

@@ -190,17 +190,17 @@ function runPickr() {
     })
 
     pickrAcc2.on('change', (...args) => {
-        backgroundColorArray = args[0].toRGBA();
-        backgroundColorArray = backgroundColorArray.map(function(input){
+        acc2ColorArray = args[0].toRGBA();
+        acc2ColorArray = acc2ColorArray.map(function(input){
             return Number(Math.round(input)); //Needed, .toRGBA() leaves value w/ trailing decimals, not recognized by three.js
         });
-        backgroundColor = `rgba(${backgroundColorArray[0]}, ${backgroundColorArray[1]}, ${backgroundColorArray[2]}, ${backgroundColorArray[3]})`;
-        r.style.setProperty('--bg-base', backgroundColor);
-        // $("#rect").css("fill", backgroundColor);
-        // $("#rect").css("stroke", backgroundColor);
-        // rect.element.style.fill = backgroundColor;
+        acc2Color = `rgba(${acc2ColorArray[0]}, ${acc2ColorArray[1]}, ${acc2ColorArray[2]}, ${acc2ColorArray[3]})`;
+        r.style.setProperty('--acc2-base', acc2Color);
+        // $("#rect").css("fill", acc2Color);
+        // $("#rect").css("stroke", acc2Color);
+        // rect.element.style.fill = acc2Color;
    
-        // init(img1URL, img2URL, backgroundColor);
+        // init(img1URL, img2URL, acc2Color);
     })
 }
 
