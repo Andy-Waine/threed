@@ -5,7 +5,7 @@
 
 
 html {
-    overflow:   hidden;
+    /* overflow:   hidden; */
     height: 100%;
         --primary: rgba(245, 247, 0, 1);
         --red-color-10: #bf443f;

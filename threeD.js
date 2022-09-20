@@ -10,6 +10,12 @@ var colorSide03;
 var colorSide02;
 var colorSide01;
 var backgroundColor = '';
+// var canvas = document.querySelector('#c');
+// var ctx = document.createElement('canvas').getContext('2d');
+// ctx.canvas.width = 256;
+// ctx.canvas.height = 256;
+// ctx.fillStyle = '#FFF';
+// ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
 
 img1_input.addEventListener('change', function(e) {
@@ -134,6 +140,7 @@ function init(userimg1, userimg2, backgroundColor) {
         loaderSide01Inv.wrapS = THREE.RepeatWrapping;
         loaderSide01Inv.repeat.x = -1;
     var loaderSide02 = new THREE.TextureLoader().load(textureLateral01);
+    // var loaderSide02 = new THREE.CanvasTexture(ctx.canvas);
         loaderSide02.wrapS = THREE.RepeatWrapping;
         loaderSide02.repeat.x = -1;
         loaderSide02.center.set(.5, .5);
@@ -153,7 +160,6 @@ function init(userimg1, userimg2, backgroundColor) {
         loaderSide03Inv.repeat.x = -1;
         loaderSide03Inv.center.set(.5, .5);
         loaderSide03Inv.rotation = THREE.Math.degToRad(270);
-
 
 
 
