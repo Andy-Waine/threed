@@ -1,6 +1,8 @@
 
 :root {
     --bg-base: rgba(245, 247, 253, 1);
+    --acc1-base: rgba(0, 0, 0, 1);
+    --acc2-base: rgba(2, 156, 253, 1);
 }
 
 
@@ -44,7 +46,7 @@ canvas {
     display: grid;
     flex-direction: row;
     position: absolute;
-    height: 600px;
+    height: 950px;
     min-width: 300px;
     top: 15vh;
     left: 80px;
@@ -87,8 +89,13 @@ object {
 }
 
 .rect {
-    stroke: rgb(245, 247, 253);
-    fill: var(--bg-base) !important;
+    stroke: var(--bg-base) !important; 
+    fill: var(--bg-base) !important; 
+}
+
+.bracket {
+    stroke: var(--acc1-base) !important; 
+    fill: var(--acc1-base) !important; 
 }
 
 .test-swatch {

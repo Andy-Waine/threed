@@ -35,8 +35,8 @@ img2_input.addEventListener('change', function(e) {
 })
 
 function runPickr() {
-        const pickr = Pickr.create({
-        el: '.color-picker',
+    const pickrBg = Pickr.create({
+        el: '.color-picker-bg',
         theme: 'monolith', // or 'classic', or 'nano'
 
         swatches: [
@@ -77,21 +77,130 @@ function runPickr() {
         }
     });
 
-    pickr.on('save', (...args) => {
+    const pickrAcc1 = Pickr.create({
+        el: '.color-picker-acc1',
+        theme: 'monolith', // or 'classic', or 'nano'
+
+        swatches: [
+            'rgba(55, 91, 210, 1)', //CL blue
+            'rgba(255, 255, 255, 1)', //white
+            'rgba(245, 247, 253, 1)', //zircon
+            'rgba(223, 231, 251, 1)', //lavender
+            'rgba(160, 179, 242, 1)', //perano
+            'rgba(26, 43, 107, 1)', //biscay
+            'rgba(12, 22, 44, 1)', //mirage
+            'rgba(255, 94, 87, 1)', //red
+            'rgba(255, 221, 89, 1)', //yellow
+            'rgba(5, 196, 107, 1)', //green
+            'rgba(139, 195, 74, 1)',
+            'rgba(205, 220, 57, 1)',
+            'rgba(255, 235, 59, 1)',
+            'rgba(0, 0, 0, 1)'
+        ],
+
+        components: {
+
+            // Main components
+            preview: true,
+            opacity: false,
+            hue: true,
+
+            // Input / output Options
+            interaction: {
+                hex: true,
+                rgba: true,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: true,
+                clear: false,
+                save: true
+            }
+        }
+    });
+
+    const pickrAcc2 = Pickr.create({
+        el: '.color-picker-acc2',
+        theme: 'monolith', // or 'classic', or 'nano'
+
+        swatches: [
+            'rgba(55, 91, 210, 1)', //CL blue
+            'rgba(255, 255, 255, 1)', //white
+            'rgba(245, 247, 253, 1)', //zircon
+            'rgba(223, 231, 251, 1)', //lavender
+            'rgba(160, 179, 242, 1)', //perano
+            'rgba(26, 43, 107, 1)', //biscay
+            'rgba(12, 22, 44, 1)', //mirage
+            'rgba(255, 94, 87, 1)', //red
+            'rgba(255, 221, 89, 1)', //yellow
+            'rgba(5, 196, 107, 1)', //green
+            'rgba(139, 195, 74, 1)',
+            'rgba(205, 220, 57, 1)',
+            'rgba(255, 235, 59, 1)',
+            'rgba(0, 0, 0, 1)'
+        ],
+
+        components: {
+
+            // Main components
+            preview: true,
+            opacity: false,
+            hue: true,
+
+            // Input / output Options
+            interaction: {
+                hex: true,
+                rgba: true,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: true,
+                clear: false,
+                save: true
+            }
+        }
+    });
+
+    pickrBg.on('change', (...args) => {
         backgroundColorArray = args[0].toRGBA();
         backgroundColorArray = backgroundColorArray.map(function(input){
             return Number(Math.round(input)); //Needed, .toRGBA() leaves value w/ trailing decimals, not recognized by three.js
         });
-        // console.log(backgroundColor);
         backgroundColor = `rgba(${backgroundColorArray[0]}, ${backgroundColorArray[1]}, ${backgroundColorArray[2]}, ${backgroundColorArray[3]})`;
-        console.log(backgroundColor);
-        console.log(LinkColorSVG)
         r.style.setProperty('--bg-base', backgroundColor);
-        $("#rect").css("fill", backgroundColor);
+        // $("#rect").css("fill", backgroundColor);
+        // $("#rect").css("stroke", backgroundColor);
         // rect.element.style.fill = backgroundColor;
-        console.log(rect);
    
-        init(img1URL, img2URL, backgroundColor);
+        // init(img1URL, img2URL, backgroundColor);
+    })
+
+    pickrAcc1.on('change', (...args) => {
+        acc1ColorArray = args[0].toRGBA();
+        acc1ColorArray = acc1ColorArray.map(function(input){
+            return Number(Math.round(input)); //Needed, .toRGBA() leaves value w/ trailing decimals, not recognized by three.js
+        });
+        acc1Color = `rgba(${acc1ColorArray[0]}, ${acc1ColorArray[1]}, ${acc1ColorArray[2]}, ${acc1ColorArray[3]})`;
+        r.style.setProperty('--acc1-base', acc1Color);
+        // $("#rect").css("fill", acc1Color);
+        // $("#rect").css("stroke", acc1Color);
+        // rect.element.style.fill = acc1Color;
+   
+        // init(img1URL, img2URL, backgroundColor);
+    })
+
+    pickrAcc2.on('change', (...args) => {
+        backgroundColorArray = args[0].toRGBA();
+        backgroundColorArray = backgroundColorArray.map(function(input){
+            return Number(Math.round(input)); //Needed, .toRGBA() leaves value w/ trailing decimals, not recognized by three.js
+        });
+        backgroundColor = `rgba(${backgroundColorArray[0]}, ${backgroundColorArray[1]}, ${backgroundColorArray[2]}, ${backgroundColorArray[3]})`;
+        r.style.setProperty('--bg-base', backgroundColor);
+        // $("#rect").css("fill", backgroundColor);
+        // $("#rect").css("stroke", backgroundColor);
+        // rect.element.style.fill = backgroundColor;
+   
+        // init(img1URL, img2URL, backgroundColor);
     })
 }
 
