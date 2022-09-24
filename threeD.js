@@ -3,7 +3,8 @@ var img2URL = '';
 var scene;
 var img1_input = document.getElementById('img1-input');
 var img2_input = document.getElementById('img2-input');
-var LinkColorSVG = document.getElementById('svgLink');
+var svg = document.getElementById('svgLink');
+var previewBtnEl = document.getElementById('previewBtn');
 var rect = document.getElementById('rect');
 var r = document.querySelector(':root');
 var colorSide03;
@@ -202,6 +203,47 @@ function runPickr() {
    
         // init(img1URL, img2URL, acc2Color);
     })
+
+
+    previewBtnEl.addEventListener('click', function() {
+        svgToPng(svg,(imgData)=>{
+            const pngImage = document.createElement('img');
+            document.body.appendChild(pngImage);
+            pngImage.src=imgData;
+        });
+        console.log('previewBtnEl Click Event Working')
+    })
+}
+
+function svgToPng(svg, callback) {
+    console.log('svgtoPng is Running');
+    const url = getSvgUrl(svg);
+    svgUrlToPng(url, (imgData) => {
+        callback(imgData);
+        URL.revokeObjectURL(url);
+    });
+}
+function getSvgUrl(svg) {
+    console.log('getSvgUrl is Running');
+    return  URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+}
+function svgUrlToPng(svgUrl, callback) {
+    console.log('svgUrlToPng is Running');
+    const svgImage = document.createElement('img');
+    // imgPreview.style.position = 'absolute';
+    // imgPreview.style.top = '-9999px';
+    document.body.appendChild(svgImage);
+    svgImage.onload = function () {
+        const canvas = document.createElement('canvas');
+        canvas.width = svgImage.clientWidth;
+        canvas.height = svgImage.clientHeight;
+        const canvasCtx = canvas.getContext('2d');
+        canvasCtx.drawImage(svgImage, 0, 0);
+        const imgData = canvas.toDataURL('image/png');
+        callback(imgData);
+        // document.body.removeChild(imgPreview);
+    };
+    svgImage.src = svgUrl;
 }
 
 function init(userimg1, userimg2, backgroundColor) {
