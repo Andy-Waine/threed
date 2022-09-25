@@ -1,6 +1,6 @@
 var img1URL = '';
 var img2URL = '';
-var img3URL;
+var img3URL = '';
 var scene;
 var img1_input = document.getElementById('img1-input');
 var img2_input = document.getElementById('img2-input');
@@ -171,11 +171,6 @@ function runPickr() {
         });
         backgroundColor = `rgba(${backgroundColorArray[0]}, ${backgroundColorArray[1]}, ${backgroundColorArray[2]}, ${backgroundColorArray[3]})`;
         r.style.setProperty('--bg-base', backgroundColor);
-        // $("#rect").css("fill", backgroundColor);
-        // $("#rect").css("stroke", backgroundColor);
-        // rect.element.style.fill = backgroundColor;
-   
-        // init(img1URL, img2URL, backgroundColor);
     })
 
     pickrAcc1.on('change', (...args) => {
@@ -185,11 +180,6 @@ function runPickr() {
         });
         acc1Color = `rgba(${acc1ColorArray[0]}, ${acc1ColorArray[1]}, ${acc1ColorArray[2]}, ${acc1ColorArray[3]})`;
         r.style.setProperty('--acc1-base', acc1Color);
-        // $("#rect").css("fill", acc1Color);
-        // $("#rect").css("stroke", acc1Color);
-        // rect.element.style.fill = acc1Color;
-   
-        // init(img1URL, img2URL, backgroundColor);
     })
 
     pickrAcc2.on('change', (...args) => {
@@ -199,11 +189,6 @@ function runPickr() {
         });
         acc2Color = `rgba(${acc2ColorArray[0]}, ${acc2ColorArray[1]}, ${acc2ColorArray[2]}, ${acc2ColorArray[3]})`;
         r.style.setProperty('--acc2-base', acc2Color);
-        // $("#rect").css("fill", acc2Color);
-        // $("#rect").css("stroke", acc2Color);
-        // rect.element.style.fill = acc2Color;
-   
-        // init(img1URL, img2URL, acc2Color);
     })
 
 
@@ -214,69 +199,21 @@ function runPickr() {
         urlGenerated = URL.createObjectURL(new Blob([updatedSvg], { type: 'image/svg+xml' }));
         img3URL = urlGenerated;
         console.log(img3URL);
-        console.log(img3URL);
         init(img1URL, img2URL, img3URL, backgroundColor);
-       
-   
-   
-   
-   
-   
-        //     svgToPng(svg,(imgData)=>{
-    //         console.log('$$$', svg)
-    //         const pngImage = document.createElement('img');
-    //         document.body.appendChild(pngImage);
-    //         pngImage.src=imgData;
-    //     });
-    //     console.log('previewBtnEl Click Event Working')
-    //     console.log('@@@', svg)
     })
 }
 
 
 
-// function svgToPng(svg, callback) {
-//     console.log('svgtoPng is Running');
-//     const url = getSvgUrl(svg);
-//     console.log(url);
-//     svgUrlToPng(url, (imgData) => {
-//         callback(imgData);
-//         // URL.revokeObjectURL(url);
-//     });
-// }
-// function getSvgUrl(svg) {
-//     console.log('getSvgUrl is Running');
-//     urlGenerated = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
-//     console.log(urlGenerated);
-//     return urlGenerated;
-// }
-// function svgUrlToPng(svgUrl, callback) {
-//     console.log('svgUrlToPng is Running');
-
-//     console.log(svgURL);
-//     const svgImage = document.createElement('img');
-//     // imgPreview.style.position = 'absolute';
-//     // imgPreview.style.top = '-9999px';
-//     document.body.appendChild(svgImage);
-//     svgImage.onload = function () {
-//         const canvas = document.createElement('canvas');
-//         canvas.width = svgImage.clientWidth;
-//         canvas.height = svgImage.clientHeight;
-//         const canvasCtx = canvas.getContext('2d');
-//         canvasCtx.drawImage(svgImage, 0, 0);
-//         const imgData = canvas.toDataURL('image/png');
-//         callback(imgData);
-//         // document.body.removeChild(imgPreview);
-//     };
-//     svgImage.src = svgUrl;
-// }
 
 function init(userimg1, userimg2, userimg3, backgroundColor) {
     
 
     img1URL = userimg1;
     img2URL = userimg2;
-    img3URL = userimg3
+    img3URL = userimg3;
+    console.log(img1URL);
+    console.log(img2URL);
     //THREE.js - 3D Rendering
     scene = new THREE.Scene();
 
