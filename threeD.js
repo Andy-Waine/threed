@@ -8,6 +8,8 @@ var svg = document.getElementById('svgLink');
 var previewBtnEl = document.getElementById('previewBtn');
 var rect = document.getElementById('rect');
 var r = document.querySelector(':root');
+var base64image;
+var screenshotTarget;
 var colorSide03;
 var colorSide02;
 var colorSide01;
@@ -193,11 +195,27 @@ function runPickr() {
 
 
     previewBtnEl.addEventListener('click', function() {
+        screenshotTarget = document.getElementById("svg-wrapper");
+
+        html2canvas(screenshotTarget).then((canvas) => {
+            base64image = canvas.toDataURL("image/png");
+            // window.location.href = base64image;
+            var testSwatch = document.getElementById('output');
+            testSwatch.appendChild(canvas);
+            console.log(base64image);
+            return base64image;
+        });
+
+       
+
+        console.log(base64image);
+
         console.log('click event listener is working');
         console.log(img1URL);
         var updatedSvg = document.getElementById('svgLink');
+        console.log(updatedSvg);
         urlGenerated = URL.createObjectURL(new Blob([updatedSvg], { type: 'image/svg+xml' }));
-        img3URL = urlGenerated;
+        img3URL = base64image;
         console.log(img3URL);
         init(img1URL, img2URL, img3URL, backgroundColor);
     })
@@ -213,7 +231,7 @@ function init(userimg1, userimg2, userimg3, backgroundColor) {
     img2URL = userimg2;
     img3URL = userimg3;
     console.log(img1URL);
-    console.log(img2URL);
+    console.log(img3URL);
     //THREE.js - 3D Rendering
     scene = new THREE.Scene();
 

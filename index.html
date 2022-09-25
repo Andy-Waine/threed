@@ -39,6 +39,7 @@
                     type="image/svg+xml"
                 ></object> -->
                 <!-- <canvas id="c" width="200" height="200"> -->
+                <div id="svg-wrapper">
                   <svg id = "svgLink" width="300px" height="300px" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
                       <rect class="rect" width="300" height="300" style="stroke: rgb(245, 247, 253); fill: rgba(245, 247, 253, 1);"/> <!-- Background -->
                       <g id="svg-bracket1" transform="matrix(0.355174, 0, 0, 0.301604, 7.138355, 16.292763)" style=""><!--Top Bracket-->
@@ -94,6 +95,7 @@
                       </g>
                     
                   </svg>
+                </div>
                   <!-- </canvas> -->
             </div>
             <div class="menu-item">
@@ -107,6 +109,7 @@
                 <div class="color-picker-acc2"></div>
             </div>
             <button id="previewBtn" class="button-mint">Preview Changes</button>
+            <div class="test-swatch" id="output"></div>
         </div>
 
         <!-- FOOTER -->
@@ -116,6 +119,7 @@
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <script src="./threeD.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

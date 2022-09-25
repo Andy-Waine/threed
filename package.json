@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Andy-Waine/threed#readme",
   "dependencies": {
-    "@simonwep/pickr": "^1.8.2"
+    "@simonwep/pickr": "^1.8.2",
+    "html2canvas": "^1.4.1"
   }
 }
