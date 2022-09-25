@@ -1,5 +1,6 @@
 var img1URL = '';
 var img2URL = '';
+var img3URL;
 var scene;
 var img1_input = document.getElementById('img1-input');
 var img2_input = document.getElementById('img2-input');
@@ -11,6 +12,7 @@ var colorSide03;
 var colorSide02;
 var colorSide01;
 var backgroundColor = '';
+var urlGenerated
 // var canvas = document.querySelector('#c');
 // var ctx = document.createElement('canvas').getContext('2d');
 // ctx.canvas.width = 256;
@@ -24,7 +26,7 @@ img1_input.addEventListener('change', function(e) {
     var userImage = e.target.files[0];
     img1URL = URL.createObjectURL( userImage );
     console.log(img1URL);
-    init(img1URL, img2URL, backgroundColor);
+    init(img1URL, img2URL, img3URL, backgroundColor);
 })
 
 img2_input.addEventListener('change', function(e) {
@@ -32,7 +34,7 @@ img2_input.addEventListener('change', function(e) {
     var userImage = e.target.files[0];
     img2URL = URL.createObjectURL( userImage );
     console.log(img2URL);
-    init(img1URL, img2URL, backgroundColor);
+    init(img1URL, img2URL, img3URL, backgroundColor);
 })
 
 function runPickr() {
@@ -206,51 +208,75 @@ function runPickr() {
 
 
     previewBtnEl.addEventListener('click', function() {
-        svgToPng(svg,(imgData)=>{
-            const pngImage = document.createElement('img');
-            document.body.appendChild(pngImage);
-            pngImage.src=imgData;
-        });
-        console.log('previewBtnEl Click Event Working')
+        console.log('click event listener is working');
+        console.log(img1URL);
+        var updatedSvg = document.getElementById('svgLink');
+        urlGenerated = URL.createObjectURL(new Blob([updatedSvg], { type: 'image/svg+xml' }));
+        img3URL = urlGenerated;
+        console.log(img3URL);
+        console.log(img3URL);
+        init(img1URL, img2URL, img3URL, backgroundColor);
+       
+   
+   
+   
+   
+   
+        //     svgToPng(svg,(imgData)=>{
+    //         console.log('$$$', svg)
+    //         const pngImage = document.createElement('img');
+    //         document.body.appendChild(pngImage);
+    //         pngImage.src=imgData;
+    //     });
+    //     console.log('previewBtnEl Click Event Working')
+    //     console.log('@@@', svg)
     })
 }
 
-function svgToPng(svg, callback) {
-    console.log('svgtoPng is Running');
-    const url = getSvgUrl(svg);
-    svgUrlToPng(url, (imgData) => {
-        callback(imgData);
-        URL.revokeObjectURL(url);
-    });
-}
-function getSvgUrl(svg) {
-    console.log('getSvgUrl is Running');
-    return  URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
-}
-function svgUrlToPng(svgUrl, callback) {
-    console.log('svgUrlToPng is Running');
-    const svgImage = document.createElement('img');
-    // imgPreview.style.position = 'absolute';
-    // imgPreview.style.top = '-9999px';
-    document.body.appendChild(svgImage);
-    svgImage.onload = function () {
-        const canvas = document.createElement('canvas');
-        canvas.width = svgImage.clientWidth;
-        canvas.height = svgImage.clientHeight;
-        const canvasCtx = canvas.getContext('2d');
-        canvasCtx.drawImage(svgImage, 0, 0);
-        const imgData = canvas.toDataURL('image/png');
-        callback(imgData);
-        // document.body.removeChild(imgPreview);
-    };
-    svgImage.src = svgUrl;
-}
 
-function init(userimg1, userimg2, backgroundColor) {
+
+// function svgToPng(svg, callback) {
+//     console.log('svgtoPng is Running');
+//     const url = getSvgUrl(svg);
+//     console.log(url);
+//     svgUrlToPng(url, (imgData) => {
+//         callback(imgData);
+//         // URL.revokeObjectURL(url);
+//     });
+// }
+// function getSvgUrl(svg) {
+//     console.log('getSvgUrl is Running');
+//     urlGenerated = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+//     console.log(urlGenerated);
+//     return urlGenerated;
+// }
+// function svgUrlToPng(svgUrl, callback) {
+//     console.log('svgUrlToPng is Running');
+
+//     console.log(svgURL);
+//     const svgImage = document.createElement('img');
+//     // imgPreview.style.position = 'absolute';
+//     // imgPreview.style.top = '-9999px';
+//     document.body.appendChild(svgImage);
+//     svgImage.onload = function () {
+//         const canvas = document.createElement('canvas');
+//         canvas.width = svgImage.clientWidth;
+//         canvas.height = svgImage.clientHeight;
+//         const canvasCtx = canvas.getContext('2d');
+//         canvasCtx.drawImage(svgImage, 0, 0);
+//         const imgData = canvas.toDataURL('image/png');
+//         callback(imgData);
+//         // document.body.removeChild(imgPreview);
+//     };
+//     svgImage.src = svgUrl;
+// }
+
+function init(userimg1, userimg2, userimg3, backgroundColor) {
     
 
     img1URL = userimg1;
     img2URL = userimg2;
+    img3URL = userimg3
     //THREE.js - 3D Rendering
     scene = new THREE.Scene();
 
@@ -274,8 +300,14 @@ function init(userimg1, userimg2, backgroundColor) {
     } else {
         textureSuperior = img1URL;
     }
-    var textureLateral01 = 'textures/LinkColor.svg';
-    console.log(textureLateral01);
+
+    var textureLateral01;
+    if (!img3URL) {
+        textureLateral01 = 'textures/LinkColor.svg';
+    } else {
+        textureLateral01 = img3URL;
+    }
+
     var textureLateral02;
     if (!img2URL) {
         textureLateral02 = 'textures/logo-main-B3.PNG';
