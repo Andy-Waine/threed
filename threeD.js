@@ -284,12 +284,12 @@ function init(userimg1, userimg2, userimg3, backgroundColor) {
 
 
     var cubeMaterials = [ 
-        new THREE.MeshPhongMaterial({ map: loaderSide03, color: colorSide03}), 
-        new THREE.MeshPhongMaterial({ map: loaderSide03Inv, color: colorSide03}),
-        new THREE.MeshPhongMaterial({ map: loaderSide02, color: colorSide02 }), 
-        new THREE.MeshPhongMaterial({ map: loaderSide02Inv, color: colorSide02 }), 
-        new THREE.MeshPhongMaterial({ map: loaderSide01, color: colorSide01 }),  
-        new THREE.MeshPhongMaterial({ map: loaderSide01Inv, color: colorSide01 }),
+        new THREE.MeshPhongMaterial({ map: loaderSide03}), 
+        new THREE.MeshPhongMaterial({ map: loaderSide03Inv}),
+        new THREE.MeshPhongMaterial({ map: loaderSide02 }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide02Inv }), 
+        new THREE.MeshPhongMaterial({ map: loaderSide01 }),  
+        new THREE.MeshPhongMaterial({ map: loaderSide01Inv }),
     ];
 
 
