@@ -14,13 +14,7 @@ var colorSide03;
 var colorSide02;
 var colorSide01;
 var backgroundColor = '';
-var urlGenerated
-// var canvas = document.querySelector('#c');
-// var ctx = document.createElement('canvas').getContext('2d');
-// ctx.canvas.width = 256;
-// ctx.canvas.height = 256;
-// ctx.fillStyle = '#FFF';
-// ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+var urlGenerated;
 
 
 img1_input.addEventListener('change', function(e) {
