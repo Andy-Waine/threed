@@ -7,6 +7,7 @@ var img2_input = document.getElementById('img2-input');
 var svg = document.getElementById('svgLink');
 var previewBtnEl = document.getElementById('previewBtn');
 var rect = document.getElementById('rect');
+//
 var r = document.querySelector(':root');
 var base64image;
 var screenshotTarget;
